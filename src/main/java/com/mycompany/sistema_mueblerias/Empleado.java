@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.sistema_mueblerias;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,14 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-public class Cliente extends javax.swing.JFrame {
+public class Empleado extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Cliente.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Empleado.class.getName());
 
     /**
-     * Creates new form Cliente
+     * Creates new form Empleado
      */
-    public Cliente() {
+    public Empleado() {
         initComponents();
     }
 
@@ -33,15 +34,13 @@ public class Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtCedula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtCargo = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -49,21 +48,15 @@ public class Cliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Identificacion:");
-
-        txtCodigo.addActionListener(this::txtCodigoActionPerformed);
+        jLabel1.setText("Codigo:");
 
         jLabel2.setText("Nombre:");
 
-        jLabel3.setText("Telefono:");
+        jLabel3.setText("Cargo:");
 
-        txtNombre.addActionListener(this::txtNombreActionPerformed);
+        jLabel4.setText("Salario:");
 
-        jLabel4.setText("Direccion:");
-
-        txtTelefono.addActionListener(this::txtTelefonoActionPerformed);
-
-        jLabel5.setText("Cedula:");
+        txtSalario.addActionListener(this::txtSalarioActionPerformed);
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -84,24 +77,18 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel1)))
-                        .addGap(63, 63, 63)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTelefono)
-                            .addComponent(txtDireccion)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                             .addComponent(txtCodigo)
-                            .addComponent(txtNombre)))
+                            .addComponent(txtNombre)
+                            .addComponent(txtCargo)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
@@ -111,55 +98,51 @@ public class Cliente extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Menu menu = new Menu();
-        menu.setVisible(true);
-        this.dispose();
+      Menu menu = new Menu();
+menu.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
     Connection cn = Conexion.conectar();
 
     if (cn == null) {
@@ -169,34 +152,28 @@ public class Cliente extends javax.swing.JFrame {
 
     try {
         PreparedStatement ps = cn.prepareStatement(
-            "INSERT INTO cliente (nombre, cedula, telefono, direccion) VALUES (?, ?, ?, ?)"
+            "INSERT INTO empleado (id_empleado, nombre, cargo, salario) VALUES (?, ?, ?, ?)"
         );
 
-        ps.setString(1, txtNombre.getText());
-        ps.setString(2, txtCedula.getText());
-        ps.setString(3, txtTelefono.getText());
-        ps.setString(4, txtDireccion.getText());
+        ps.setInt(1, Integer.parseInt(txtCodigo.getText()));
+        ps.setString(2, txtNombre.getText());
+        ps.setString(3, txtCargo.getText());
+        ps.setDouble(4, Double.parseDouble(txtSalario.getText()));
 
         ps.executeUpdate();
 
-        JOptionPane.showMessageDialog(null, "Cliente guardado correctamente");
+        JOptionPane.showMessageDialog(null, "Empleado guardado correctamente");
+
+        ps.close();
+        cn.close();
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-    }   
-
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Connection cn = Conexion.conectar();
+     Connection cn = Conexion.conectar();
 
     if (cn == null) {
         JOptionPane.showMessageDialog(null, "No hay conexión");
@@ -211,7 +188,7 @@ public class Cliente extends javax.swing.JFrame {
         }
 
         PreparedStatement ps = cn.prepareStatement(
-            "SELECT * FROM cliente WHERE id_cliente = ?"
+            "SELECT * FROM empleado WHERE id_empleado = ?"
         );
     ps.setInt(1, Integer.parseInt(txtCodigo.getText()));
 
@@ -219,11 +196,10 @@ public class Cliente extends javax.swing.JFrame {
 
         if (rs.next()) {
             txtNombre.setText(rs.getString("nombre"));
-            txtCedula.setText(rs.getString("cedula"));
-            txtTelefono.setText(rs.getString("telefono"));
-            txtDireccion.setText(rs.getString("direccion"));
+            txtCargo.setText(rs.getString("cargo"));
+            txtSalario.setText(rs.getString("salario"));
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+            JOptionPane.showMessageDialog(null, "Empleado no encontrado");
         }
 
         rs.close();
@@ -235,15 +211,14 @@ public class Cliente extends javax.swing.JFrame {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
     }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- txtCodigo.setText("");
+  txtCodigo.setText("");
 txtNombre.setText("");
-txtCedula.setText("");
-txtTelefono.setText("");
-txtDireccion.setText("");
+txtCodigo.setText("");
+txtCargo.setText("");
+txtSalario.setText("");
 txtCodigo.requestFocus();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -269,7 +244,7 @@ txtCodigo.requestFocus();
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Cliente().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Empleado().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -281,11 +256,9 @@ txtCodigo.requestFocus();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
